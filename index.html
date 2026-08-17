@@ -5,168 +5,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Al-Hadiqa Invest | Ecosistema Digital</title>
     <style>
+        /* Paleta de colores basada en la imagen LIONS-GOLD */
         :root {
-            --bg-color: #0b131e; /* Azul muy oscuro/negro */
-            --card-bg: #142132;
+            --bg-deep-blue: #04101e;
+            --bg-teal-dark: #072635;
             --gold-primary: #d4af37;
-            --gold-secondary: #f3e5ab;
-            --text-light: #e0e0e0;
-            --text-muted: #8ba1bd;
+            --gold-light: #fbe69b;
+            --gold-dark: #aa8529;
+            --cyan-neon: #00f2fe;
+            --text-main: #e2e8f0;
+            --panel-bg: rgba(4, 16, 30, 0.85);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-light);
-            line-height: 1.6;
+            /* Fondo que simula el degradado azul a verde azulado de la imagen */
+            background: linear-gradient(135deg, var(--bg-deep-blue) 0%, var(--bg-teal-dark) 50%, var(--bg-deep-blue) 100%);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Cabecera / Hero */
+        /* Marcos y bordes ornamentales dorados */
+        .gold-border-container {
+            border: 2px solid var(--gold-dark);
+            position: relative;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .gold-border-container::before, .gold-border-container::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid var(--gold-light);
+            background: var(--bg-deep-blue);
+        }
+        .gold-border-container::before { top: -6px; left: -6px; }
+        .gold-border-container::after { bottom: -6px; right: -6px; }
+
+        /* Cabecera */
         header {
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(180deg, #050a10 0%, var(--bg-color) 100%);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 3rem 1rem;
+            background: radial-gradient(circle at center, rgba(7, 38, 53, 0.8) 0%, rgba(4, 16, 30, 0.9) 100%);
+            border-bottom: 2px solid var(--gold-primary);
         }
 
         header h1 {
-            color: var(--gold-primary);
-            font-size: 3rem;
-            letter-spacing: 2px;
+            font-family: 'Times New Roman', Times, serif; /* Tipografía más clásica/elegante */
+            color: var(--gold-light);
+            font-size: 3.5rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+            margin-bottom: 0.5rem;
         }
 
         header p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Contenedor Principal (El Hub) */
-        .ecosystem-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--gold-secondary);
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
+            color: var(--cyan-neon);
+            font-size: 1.1rem;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* Retícula de Tarjetas */
-        .grid {
+        /* Contenedor Central */
+        .hub-container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Cinta Decorativa (Emulando el lazo de la imagen) */
+        .ribbon-title {
+            background: linear-gradient(90deg, var(--bg-deep-blue), var(--gold-dark), var(--bg-deep-blue));
+            padding: 2px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .ribbon-title h2 {
+            background: var(--panel-bg);
+            padding: 0.8rem 2rem;
+            color: var(--gold-light);
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+
+        /* Retícula de Proyectos */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
         }
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            border-radius: 8px;
+        /* Tarjetas de Ecosistema */
+        .ecosystem-card {
+            background: var(--panel-bg);
             padding: 2rem;
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .card:hover {
+        /* Brillo interior cian */
+        .ecosystem-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.05);
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .ecosystem-card:hover {
             transform: translateY(-5px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-light);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 242, 254, 0.2);
         }
 
-        .card h2 {
+        .ecosystem-card:hover::before {
+            box-shadow: inset 0 0 30px rgba(0, 242, 254, 0.15);
+        }
+
+        .ecosystem-card h3 {
             color: var(--gold-primary);
-            font-size: 1.5rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .card p {
-            color: var(--text-muted);
+        .ecosystem-card p {
+            color: var(--text-main);
+            font-size: 1rem;
             margin-bottom: 2rem;
-            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        .card-btn {
+        /* Botones dorados con toque tecnológico */
+        .action-btn {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: transparent;
-            color: var(--gold-primary);
+            padding: 0.8rem 2rem;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-light);
             text-decoration: none;
             border: 1px solid var(--gold-primary);
-            border-radius: 4px;
             font-weight: bold;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card-btn:hover {
-            background-color: var(--gold-primary);
-            color: var(--bg-color);
+        .action-btn:hover {
+            background: var(--gold-primary);
+            color: var(--bg-deep-blue);
+            box-shadow: 0 0 15px var(--gold-primary);
         }
 
-        /* Pie de página y Contacto */
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background-color: #050a10;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            margin-top: 4rem;
-        }
-
-        .contact-box {
-            margin-bottom: 2rem;
-        }
-
-        .contact-box p {
-            color: var(--text-muted);
+        /* Íconos simulados con CSS (Trading, Gaming, Tech) */
+        .card-icon {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--cyan-neon);
+            text-shadow: 0 0 10px var(--cyan-neon);
         }
 
-        .contact-email {
-            display: inline-block;
+        /* Footer y Contacto */
+        footer {
+            background: var(--bg-deep-blue);
+            border-top: 2px solid var(--gold-dark);
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: auto;
+        }
+
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 4px;
+        }
+
+        .contact-wrapper p {
             color: var(--gold-primary);
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-bottom: 1px dashed var(--gold-primary);
-            padding-bottom: 2px;
-            transition: color 0.3s ease;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .contact-email:hover {
-            color: var(--gold-secondary);
-            border-bottom-style: solid;
+        .email-link {
+            display: inline-block;
+            color: var(--cyan-neon);
+            font-size: 1.3rem;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(0, 242, 254, 0.3);
+        }
+
+        .email-link:hover {
+            color: #fff;
+            text-shadow: 0 0 15px var(--cyan-neon);
         }
 
         .copyright {
-            color: #5a6a80;
-            font-size: 0.85rem;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #4a6a8a;
         }
 
-        /* Responsivo */
+        /* Responsive */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
+            header h1 { font-size: 2.2rem; }
+            .ecosystem-card { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -174,41 +252,48 @@
 
     <header>
         <h1>Al-Hadiqa Invest</h1>
-        <p>Ecosistema digital integral. Soluciones en tecnología, finanzas estratégicas y comunidades interactivas unificadas en un solo lugar.</p>
+        <p>Holding Empresarial & Ecosistema Digital</p>
     </header>
 
-    <main class="ecosystem-container">
-        <h2 class="section-title">Nuestras Divisiones</h2>
+    <main class="hub-container">
         
-        <div class="grid">
-            <!-- División 1: Trading & Finanzas -->
-            <div class="card">
-                <h2>Profit Quest</h2>
-                <p>Análisis de mercados, sistemas automatizados y gestión de capital de inversión en entornos bursátiles y criptográficos.</p>
-                <a href="#" class="card-btn">Explorar Mercados</a>
+        <div class="ribbon-title">
+            <h2>Nuestras Divisiones</h2>
+        </div>
+
+        <div class="projects-grid">
+            
+            <!-- Profit Quest (Trading) -->
+            <div class="ecosystem-card gold-border-container">
+                <div class="card-icon">📈</div>
+                <h3>Profit Quest</h3>
+                <p>Análisis de mercados, ejecución de sistemas automatizados y gestión estratégica de capital en plataformas financieras.</p>
+                <a href="#" class="action-btn">Acceder al Mercado</a>
             </div>
 
-            <!-- División 2: Gaming & Comunidad -->
-            <div class="card">
-                <h2>LIONS-GOLD Digital Arena</h2>
-                <p>Nuestra división de deportes electrónicos y comunidad competitiva. Únete a las filas en nuestras operaciones estratégicas y asedios.</p>
-                <a href="#" class="card-btn">Entrar a la Arena</a>
+            <!-- LIONS-GOLD (Gaming) -->
+            <div class="ecosystem-card gold-border-container">
+                <div class="card-icon">🎮</div>
+                <h3>LIONS-GOLD</h3>
+                <p>Nuestra Digital Arena. Operaciones de clan, estrategias competitivas y desarrollo de perfiles en el sector del gaming.</p>
+                <a href="#" class="action-btn">Entrar a la Arena</a>
             </div>
 
-            <!-- División 3: Desarrollo & E-commerce -->
-            <div class="card">
-                <h2>Mercatus United & Tech</h2>
-                <p>Desarrollo web Full-Stack, infraestructuras e-commerce multiplataforma y soluciones tecnológicas escalables empresariales.</p>
-                <a href="#" class="card-btn">Ver Proyectos</a>
+            <!-- Mercatus United (Tech / Dev) -->
+            <div class="ecosystem-card gold-border-container">
+                <div class="card-icon">⚙️</div>
+                <h3>Mercatus United</h3>
+                <p>Infraestructura tecnológica, desarrollo de aplicaciones e-commerce multiplataforma y soluciones web escalables.</p>
+                <a href="#" class="action-btn">Ver Proyectos Tech</a>
             </div>
+
         </div>
     </main>
 
     <footer>
-        <div class="contact-box">
-            <p>¿Tienes consultas sobre nuestros proyectos o buscas establecer una alianza comercial?</p>
-            <!-- Enlace de correo programado -->
-            <a href="mailto:empresaalhadiqainvest@gmail.com" class="contact-email">
+        <div class="contact-wrapper gold-border-container">
+            <p>Contacto Corporativo y Alianzas Estratégicas</p>
+            <a href="mailto:empresaalhadiqainvest@gmail.com" class="email-link">
                 empresaalhadiqainvest@gmail.com
             </a>
         </div>
