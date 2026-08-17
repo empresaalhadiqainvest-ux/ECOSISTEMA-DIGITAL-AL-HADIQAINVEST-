@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Hadiqa Invest | Ecosistema Digital</title>
+    <style>
+        :root {
+            --bg-color: #0b131e; /* Azul muy oscuro/negro */
+            --card-bg: #142132;
+            --gold-primary: #d4af37;
+            --gold-secondary: #f3e5ab;
+            --text-light: #e0e0e0;
+            --text-muted: #8ba1bd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Cabecera / Hero */
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #050a10 0%, var(--bg-color) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        header h1 {
+            color: var(--gold-primary);
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contenedor Principal (El Hub) */
+        .ecosystem-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--gold-secondary);
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Retícula de Tarjetas */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .card h2 {
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: transparent;
+            color: var(--gold-primary);
+            text-decoration: none;
+            border: 1px solid var(--gold-primary);
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .card-btn:hover {
+            background-color: var(--gold-primary);
+            color: var(--bg-color);
+        }
+
+        /* Pie de página y Contacto */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: #050a10;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 4rem;
+        }
+
+        .contact-box {
+            margin-bottom: 2rem;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .contact-email {
+            display: inline-block;
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--gold-primary);
+            padding-bottom: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email:hover {
+            color: var(--gold-secondary);
+            border-bottom-style: solid;
+        }
+
+        .copyright {
+            color: #5a6a80;
+            font-size: 0.85rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Al-Hadiqa Invest</h1>
+        <p>Ecosistema digital integral. Soluciones en tecnología, finanzas estratégicas y comunidades interactivas unificadas en un solo lugar.</p>
+    </header>
+
+    <main class="ecosystem-container">
+        <h2 class="section-title">Nuestras Divisiones</h2>
+        
+        <div class="grid">
+            <!-- División 1: Trading & Finanzas -->
+            <div class="card">
+                <h2>Profit Quest</h2>
+                <p>Análisis de mercados, sistemas automatizados y gestión de capital de inversión en entornos bursátiles y criptográficos.</p>
+                <a href="#" class="card-btn">Explorar Mercados</a>
+            </div>
+
+            <!-- División 2: Gaming & Comunidad -->
+            <div class="card">
+                <h2>LIONS-GOLD Digital Arena</h2>
+                <p>Nuestra división de deportes electrónicos y comunidad competitiva. Únete a las filas en nuestras operaciones estratégicas y asedios.</p>
+                <a href="#" class="card-btn">Entrar a la Arena</a>
+            </div>
+
+            <!-- División 3: Desarrollo & E-commerce -->
+            <div class="card">
+                <h2>Mercatus United & Tech</h2>
+                <p>Desarrollo web Full-Stack, infraestructuras e-commerce multiplataforma y soluciones tecnológicas escalables empresariales.</p>
+                <a href="#" class="card-btn">Ver Proyectos</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-box">
+            <p>¿Tienes consultas sobre nuestros proyectos o buscas establecer una alianza comercial?</p>
+            <!-- Enlace de correo programado -->
+            <a href="mailto:empresaalhadiqainvest@gmail.com" class="contact-email">
+                empresaalhadiqainvest@gmail.com
+            </a>
+        </div>
+        <p class="copyright">&copy; 2026 Al-Hadiqa Invest. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
