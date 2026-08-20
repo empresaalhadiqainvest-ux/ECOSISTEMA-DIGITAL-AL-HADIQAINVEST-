@@ -1,304 +1,203 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al-Hadiqa Invest | Ecosistema Digital</title>
+    <meta name="description" content="AL-HADIQAINVEST - Holding Empresarial & Ecosistema Digital. Trading, Soluciones de Negocio y Comunidades Gaming.">
+    <title>AL-HADIQAINVEST | Holding Empresarial</title>
+    
+    <!-- Tipografía Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN para máxima velocidad y sin dependencias externas) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        corporate: {
+                            dark: '#0f172a', // Antracita/Azul marino
+                            light: '#1e293b',
+                            gold: '#fbbf24', // Dorado
+                            emerald: '#10b981' // Verde Esmeralda
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Paleta de colores basada en la imagen LIONS-GOLD */
-        :root {
-            --bg-deep-blue: #04101e;
-            --bg-teal-dark: #072635;
-            --gold-primary: #d4af37;
-            --gold-light: #fbe69b;
-            --gold-dark: #aa8529;
-            --cyan-neon: #00f2fe;
-            --text-main: #e2e8f0;
-            --panel-bg: rgba(4, 16, 30, 0.85);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            /* Fondo que simula el degradado azul a verde azulado de la imagen */
-            background: linear-gradient(135deg, var(--bg-deep-blue) 0%, var(--bg-teal-dark) 50%, var(--bg-deep-blue) 100%);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Marcos y bordes ornamentales dorados */
-        .gold-border-container {
-            border: 2px solid var(--gold-dark);
-            position: relative;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-        
-        .gold-border-container::before, .gold-border-container::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border: 2px solid var(--gold-light);
-            background: var(--bg-deep-blue);
-        }
-        .gold-border-container::before { top: -6px; left: -6px; }
-        .gold-border-container::after { bottom: -6px; right: -6px; }
-
-        /* Cabecera */
-        header {
-            text-align: center;
-            padding: 3rem 1rem;
-            background: radial-gradient(circle at center, rgba(7, 38, 53, 0.8) 0%, rgba(4, 16, 30, 0.9) 100%);
-            border-bottom: 2px solid var(--gold-primary);
-        }
-
-        header h1 {
-            font-family: 'Times New Roman', Times, serif; /* Tipografía más clásica/elegante */
-            color: var(--gold-light);
-            font-size: 3.5rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.4);
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: var(--cyan-neon);
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Contenedor Central */
-        .hub-container {
-            flex: 1;
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        /* Cinta Decorativa (Emulando el lazo de la imagen) */
-        .ribbon-title {
-            background: linear-gradient(90deg, var(--bg-deep-blue), var(--gold-dark), var(--bg-deep-blue));
-            padding: 2px;
-            border-radius: 4px;
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-        }
-        
-        .ribbon-title h2 {
-            background: var(--panel-bg);
-            padding: 0.8rem 2rem;
-            color: var(--gold-light);
-            font-family: 'Times New Roman', Times, serif;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-        }
-
-        /* Retícula de Proyectos */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            width: 100%;
-        }
-
-        /* Tarjetas de Ecosistema */
-        .ecosystem-card {
-            background: var(--panel-bg);
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Brillo interior cian */
-        .ecosystem-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.05);
-            pointer-events: none;
-            transition: all 0.4s ease;
-        }
-
-        .ecosystem-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-light);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 242, 254, 0.2);
-        }
-
-        .ecosystem-card:hover::before {
-            box-shadow: inset 0 0 30px rgba(0, 242, 254, 0.15);
-        }
-
-        .ecosystem-card h3 {
-            color: var(--gold-primary);
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .ecosystem-card p {
-            color: var(--text-main);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            line-height: 1.5;
-        }
-
-        /* Botones dorados con toque tecnológico */
-        .action-btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--gold-light);
-            text-decoration: none;
-            border: 1px solid var(--gold-primary);
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .action-btn:hover {
-            background: var(--gold-primary);
-            color: var(--bg-deep-blue);
-            box-shadow: 0 0 15px var(--gold-primary);
-        }
-
-        /* Íconos simulados con CSS (Trading, Gaming, Tech) */
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--cyan-neon);
-            text-shadow: 0 0 10px var(--cyan-neon);
-        }
-
-        /* Footer y Contacto */
-        footer {
-            background: var(--bg-deep-blue);
-            border-top: 2px solid var(--gold-dark);
-            text-align: center;
-            padding: 3rem 1rem;
-            margin-top: auto;
-        }
-
-        .contact-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(212, 175, 55, 0.05);
-            border-radius: 4px;
-        }
-
-        .contact-wrapper p {
-            color: var(--gold-primary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .email-link {
-            display: inline-block;
-            color: var(--cyan-neon);
-            font-size: 1.3rem;
-            text-decoration: none;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px rgba(0, 242, 254, 0.3);
-        }
-
-        .email-link:hover {
-            color: #fff;
-            text-shadow: 0 0 15px var(--cyan-neon);
-        }
-
-        .copyright {
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #4a6a8a;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .ecosystem-card { padding: 1.5rem; }
-        }
+        /* Microinteracciones y utilidades base */
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .btn-hover { transition: all 0.3s ease; }
+        .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3); }
+        .btn-gold:hover { box-shadow: 0 10px 15px -3px rgba(251, 191, 36, 0.3); }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-corporate-gold selection:text-corporate-dark">
 
-    <header>
-        <h1>Al-Hadiqa Invest</h1>
-        <p>Holding Empresarial & Ecosistema Digital</p>
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="fixed w-full top-0 z-50 bg-corporate-dark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-wider text-white">
+                AL-HADIQA<span class="text-corporate-gold">INVEST</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="#trading" class="hover:text-corporate-gold transition">Trading</a>
+                <a href="#smithbusiness" class="hover:text-corporate-gold transition">SmithBusiness</a>
+                <a href="#gaming" class="hover:text-corporate-gold transition">Lions-Gold</a>
+                <a href="#ecosistema" class="hover:text-corporate-gold transition">Ecosistema</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="hub-container">
-        
-        <div class="ribbon-title">
-            <h2>Nuestras Divisiones</h2>
-        </div>
-
-        <div class="projects-grid">
-            
-            <!-- Profit Quest (Trading) -->
-            <div class="ecosystem-card gold-border-container">
-                <div class="card-icon">📈</div>
-                <h3>Profit Quest</h3>
-                <p>Análisis de mercados, ejecución de sistemas automatizados y gestión estratégica de capital en plataformas financieras.</p>
-                <a href="#" class="action-btn">Acceder al Mercado</a>
+    <main>
+        <!-- SECCIÓN HERO -->
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Holding Empresarial & <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-corporate-gold to-yellow-200">Ecosistema Digital</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto font-light">
+                    Innovación, estrategia y rentabilidad. Conectamos los mercados financieros, soluciones tecnológicas corporativas y el entretenimiento digital de alto nivel en un solo ecosistema integral.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#trading" class="bg-corporate-gold text-corporate-dark px-8 py-3 rounded-full font-semibold btn-hover btn-gold">
+                        Explorar Ecosistema
+                    </a>
+                </div>
             </div>
+            <!-- Elemento de fondo decorativo -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-corporate-light rounded-full blur-[120px] opacity-20 -z-10"></div>
+        </section>
 
-            <!-- LIONS-GOLD (Gaming) -->
-            <div class="ecosystem-card gold-border-container">
-                <div class="card-icon">🎮</div>
-                <h3>LIONS-GOLD</h3>
-                <p>Nuestra Digital Arena. Operaciones de clan, estrategias competitivas y desarrollo de perfiles en el sector del gaming.</p>
-                <a href="#" class="action-btn">Entrar a la Arena</a>
+        <!-- SECCIÓN 1: TRADING INSTITUCIONAL -->
+        <section id="trading" class="py-20 bg-corporate-light/30 border-y border-gray-800">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-white">Trading Institucional & Educación Financiera</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Accede a los mercados globales con estrategias institucionales. Formamos traders profesionales combinando análisis avanzado, gestión de riesgo y una educación financiera estructurada para la rentabilidad a largo plazo.
+                    </p>
+                    <a href="https://empresaalhadiqainvest-ux.github.io/Al-hadiqainvest-TRADING-Y-EDUCACI-N-FINANCIERA-/" target="_blank" rel="noopener noreferrer" class="inline-block bg-corporate-emerald text-white px-8 py-3 rounded-md font-medium btn-hover">
+                        Ingresar a la Plataforma
+                    </a>
+                </div>
+                <div class="bg-corporate-dark h-64 rounded-xl border border-gray-700 shadow-2xl flex items-center justify-center p-6 relative overflow-hidden">
+                    <!-- Gráfico decorativo simple -->
+                    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px); background-size: 20px 20px;"></div>
+                    <span class="text-corporate-emerald text-6xl opacity-50 z-10">📈</span>
+                </div>
             </div>
+        </section>
 
-            <!-- Mercatus United (Tech / Dev) -->
-            <div class="ecosystem-card gold-border-container">
-                <div class="card-icon">⚙️</div>
-                <h3>Mercatus United</h3>
-                <p>Infraestructura tecnológica, desarrollo de aplicaciones e-commerce multiplataforma y soluciones web escalables.</p>
-                <a href="#" class="action-btn">Ver Proyectos Tech</a>
+        <!-- SECCIÓN 2: SMITHBUSINESS SOLUTIONS -->
+        <section id="smithbusiness" class="py-20">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 bg-corporate-dark h-64 rounded-xl border border-gray-700 shadow-2xl flex items-center justify-center p-6 relative">
+                     <span class="text-corporate-gold text-6xl opacity-50 z-10">⚙️</span>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4 text-white">SMITHBUSINESS Solutions</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Desarrollo de soluciones de negocio, tecnología y consultoría empresarial. Optimizamos procesos, diseñamos arquitecturas de software robustas y escalamos operaciones comerciales mediante innovación digital.
+                    </p>
+                    <a href="https://empresaalhadiqainvest-ux.github.io/Smith-business-solutions/" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-md font-medium btn-hover">
+                        Descubrir Soluciones
+                    </a>
+                </div>
             </div>
+        </section>
 
-        </div>
+        <!-- SECCIÓN 3: TABERNA LIONS-GOLD -->
+        <section id="gaming" class="py-20 bg-corporate-light/30 border-y border-gray-800">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-white">TABERNA LIONS-GOLD</h2>
+                    <h3 class="text-xl text-corporate-gold mb-4">Comunidad Gaming MMORPG Albion Online</h3>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Nuestro brazo de entretenimiento e interacción digital. Una comunidad sólida y competitiva dentro del MMORPG Albion Online, centrada en la estrategia de gremios, economía interna y desarrollo de jugadores en un entorno colaborativo.
+                    </p>
+                    <a href="https://zambranogonzalezsmith-blip.github.io/LA-TABERNA-LIONS-GOLD-/" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-600 text-white px-8 py-3 rounded-md font-medium btn-hover">
+                        Unirse a la Taberna
+                    </a>
+                </div>
+                <div class="bg-corporate-dark h-64 rounded-xl border border-orange-900/50 shadow-2xl flex items-center justify-center p-6 relative">
+                     <span class="text-orange-500 text-6xl opacity-50 z-10">⚔️</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: ECOSISTEMA DIGITAL & HOLDING (Tarjetas Modulares) -->
+        <section id="ecosistema" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-white mb-4">Pilares del Ecosistema Digital</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">La infraestructura tecnológica y de servicios que da soporte al holding empresarial, garantizando escalabilidad y eficiencia.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-corporate-light p-8 rounded-xl border border-gray-800 hover:border-corporate-gold transition duration-300">
+                        <div class="w-12 h-12 bg-corporate-dark rounded-lg flex items-center justify-center mb-6 border border-gray-700 text-corporate-gold text-2xl">🛒</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Plataformas E-Commerce</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Desarrollo e implementación de sistemas multi-tienda y plataformas de distribución con pasarelas de pago integradas e inventario automatizado.</p>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="bg-corporate-light p-8 rounded-xl border border-gray-800 hover:border-corporate-emerald transition duration-300">
+                        <div class="w-12 h-12 bg-corporate-dark rounded-lg flex items-center justify-center mb-6 border border-gray-700 text-corporate-emerald text-2xl">🧠</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Inteligencia Artificial</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Diseño de asistentes virtuales e inteligencias artificiales capaces de operar localmente (offline) para optimizar la toma de decisiones empresariales.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-corporate-light p-8 rounded-xl border border-gray-800 hover:border-blue-500 transition duration-300">
+                        <div class="w-12 h-12 bg-corporate-dark rounded-lg flex items-center justify-center mb-6 border border-gray-700 text-blue-500 text-2xl">🛡️</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Gestión de Comunidades</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Creación, administración y liderazgo de entornos digitales a gran escala, gestionando recursos y fomentando el crecimiento colectivo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="contact-wrapper gold-border-container">
-            <p>Contacto Corporativo y Alianzas Estratégicas</p>
-            <a href="mailto:empresaalhadiqainvest@gmail.com" class="email-link">
-                empresaalhadiqainvest@gmail.com
-            </a>
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-gray-900">
+        <div class="container mx-auto px-6 text-center md:text-left grid md:grid-cols-3 gap-8 items-center">
+            <div>
+                <a href="#" class="text-2xl font-bold tracking-wider text-white">
+                    AL-HADIQA<span class="text-corporate-gold">INVEST</span>
+                </a>
+                <p class="text-gray-500 text-sm mt-4">Holding Empresarial & Ecosistema Digital.</p>
+            </div>
+            <div class="text-gray-500 text-sm flex flex-col space-y-2 text-center">
+                <a href="#trading" class="hover:text-white transition">Trading Institucional</a>
+                <a href="#smithbusiness" class="hover:text-white transition">SmithBusiness Solutions</a>
+                <a href="#gaming" class="hover:text-white transition">Taberna Lions-Gold</a>
+            </div>
+            <div class="text-sm text-gray-600 md:text-right">
+                <p>&copy; 2026 AL-HADIQAINVEST.</p>
+                <p>Todos los derechos reservados.</p>
+            </div>
         </div>
-        <p class="copyright">&copy; 2026 Al-Hadiqa Invest. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script para comportamiento interactivo simple -->
+    <script>
+        // Aquí se puede añadir lógica futura, como modales o analítica.
+        console.log("AL-HADIQAINVEST Ecosistema Inicializado - Todos los sistemas operativos.");
+    </script>
 </body>
 </html>
