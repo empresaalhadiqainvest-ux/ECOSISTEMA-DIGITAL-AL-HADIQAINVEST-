@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AL-HADIQAINVEST - Holding Empresarial &amp; Ecosistema Digital. Trading, Soluciones de Negocio, Comunidades Gaming y Educación Financiera (AL-HADIQA CAPITAL).">
+<meta name="theme-color" content="#0b1120">
+<meta name="author" content="Smith Business Solutions">
+<meta property="og:title" content="AL-HADIQAINVEST | Holding Empresarial">
+<meta property="og:description" content="Innovación, estrategia y rentabilidad. Mercados financieros, soluciones tecnológicas, entretenimiento digital y educación financiera (AL-HADIQA CAPITAL) en un solo ecosistema.">
+<meta property="og:type" content="website">
+<title>AL-HADIQAINVEST | Holding Empresarial &amp; Ecosistema Digital</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   AL-HADIQAINVEST — Hoja de estilos única (sin dependencias JS)
+   1. Tokens de diseño
+   2. Base y accesibilidad
+   3. Layout y utilidades
+   4. Componentes
+   5. Secciones
+   6. Responsive
+   ============================================================ */
+
+/* ---------- 1. Tokens de diseño ---------- */
+:root{
+  --ink:#0b1120;
+  --surface:#0f172a;
+  --surface-2:#151f36;
+  --surface-3:#1e293b;
+  --line:rgba(148,163,184,.14);
+  --line-strong:rgba(148,163,184,.28);
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --muted-2:#64748b;
+  --gold:#fbbf24;
+  --gold-soft:#fde68a;
+  --emerald:#10b981;
+  --blue:#3b82f6;
+  --orange:#f97316;
+
+  --font-head:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  --wrap:1200px;
+  --gutter:clamp(1.25rem,4vw,2.5rem);
+  --radius:18px;
+  --radius-sm:12px;
+
+  --shadow-lg:0 30px 60px -25px rgba(0,0,0,.75);
+  --shadow-glow:0 18px 40px -18px rgba(251,191,36,.45);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+/* ---------- 2. Base y accesibilidad ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:6rem;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  font-weight:300;
+  font-size:1rem;
+  line-height:1.7;
+  color:var(--text);
+  background:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin:0}
+p{margin:0}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+::selection{background:var(--gold);color:var(--ink)}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.skip-link{
+  position:absolute;top:.5rem;left:.5rem;z-index:200;
+  transform:translateY(-160%);
+  background:var(--gold);color:var(--ink);
+  padding:.65rem 1.1rem;border-radius:999px;font-weight:600;font-size:.85rem;
+  transition:transform .25s var(--ease);
+}
+.skip-link:focus{transform:translateY(0)}
+
+/* Scrollbar discreta */
+*{scrollbar-width:thin;scrollbar-color:var(--surface-3) var(--ink)}
+*::-webkit-scrollbar{width:10px;height:10px}
+*::-webkit-scrollbar-track{background:var(--ink)}
+*::-webkit-scrollbar-thumb{background:var(--surface-3);border-radius:99px}
+
+/* ---------- 3. Layout y utilidades ---------- */
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.section{position:relative;padding-block:clamp(4.5rem,9vw,7.5rem)}
+.section--alt{
+  background:linear-gradient(180deg,rgba(30,41,59,.45),rgba(15,23,42,.15));
+  border-block:1px solid var(--line);
+}
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
+.stack>*+*{margin-top:1.5rem}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--font-head);font-size:.72rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.1rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.7}
+
+.h-display{font-size:clamp(2.4rem,6.2vw,4.2rem);font-weight:800}
+.h-section{font-size:clamp(1.7rem,3.4vw,2.5rem)}
+.h-card{font-size:1.15rem;font-weight:700}
+.lead{font-size:clamp(1rem,1.6vw,1.18rem);color:var(--muted);max-width:56ch}
+.body-text{color:var(--muted);max-width:58ch}
+.gradient-text{
+  background:linear-gradient(100deg,var(--gold),var(--gold-soft) 45%,#fff8dc);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* Fondos decorativos */
+.glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.grid-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),
+                   linear-gradient(to bottom,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000 20%,transparent 75%);
+  opacity:.55;
+}
+
+/* ---------- 4. Componentes ---------- */
+
+/* Botones */
+.btn{
+  --btn-bg:var(--gold);--btn-fg:var(--ink);--btn-ring:rgba(251,191,36,.4);
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.9rem 1.9rem;border:1px solid transparent;border-radius:999px;
+  background:var(--btn-bg);color:var(--btn-fg);
+  font-family:var(--font-head);font-size:.9rem;font-weight:600;letter-spacing:.01em;
+  cursor:pointer;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background-color .3s var(--ease),border-color .3s var(--ease);
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 32px -14px var(--btn-ring)}
+.btn:active{transform:translateY(-1px)}
+.btn .arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--emerald{--btn-bg:var(--emerald);--btn-fg:#04231a;--btn-ring:rgba(16,185,129,.5)}
+.btn--blue{--btn-bg:var(--blue);--btn-fg:#fff;--btn-ring:rgba(59,130,246,.5)}
+.btn--orange{--btn-bg:var(--orange);--btn-fg:#231005;--btn-ring:rgba(249,115,22,.5)}
+.btn--ghost{
+  --btn-bg:transparent;--btn-fg:var(--text);--btn-ring:rgba(148,163,184,.35);
+  border-color:var(--line-strong);
+}
+.btn--ghost:hover{background:rgba(148,163,184,.08);border-color:var(--muted)}
+
+/* Header */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  background:rgba(11,17,32,.82);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:72px}
+.brand{
+  font-family:var(--font-head);font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:800;
+  letter-spacing:.06em;color:#fff;white-space:nowrap;
+}
+.brand span{color:var(--gold)}
+.nav{display:flex;align-items:center;gap:.35rem}
+.nav a{
+  position:relative;padding:.5rem .9rem;border-radius:999px;
+  font-size:.9rem;font-weight:500;color:var(--muted);
+  transition:color .25s var(--ease),background-color .25s var(--ease);
+}
+.nav a:hover{color:var(--gold);background:rgba(251,191,36,.08)}
+.header-cta{margin-left:.5rem;padding:.6rem 1.3rem;font-size:.82rem}
+
+/* Menú móvil sin JavaScript (checkbox + label) */
+.nav-toggle{position:absolute;opacity:0;pointer-events:none}
+.burger{
+  display:none;width:46px;height:46px;flex:0 0 auto;
+  align-items:center;justify-content:center;
+  border:1px solid var(--line-strong);border-radius:12px;
+  background:rgba(148,163,184,.06);cursor:pointer;
+}
+.burger span{position:relative;display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:.3s var(--ease)}
+.burger span::before,.burger span::after{
+  content:"";position:absolute;left:0;width:20px;height:2px;background:var(--text);border-radius:2px;transition:.3s var(--ease);
+}
+.burger span::before{top:-6px}
+.burger span::after{top:6px}
+.nav-toggle:focus-visible+.burger{outline:2px solid var(--gold);outline-offset:3px}
+.nav-toggle:checked+.burger span{background:transparent}
+.nav-toggle:checked+.burger span::before{top:0;transform:rotate(45deg)}
+.nav-toggle:checked+.burger span::after{top:0;transform:rotate(-45deg)}
+
+/* Tarjeta genérica */
+.card{
+  position:relative;
+  padding:2.1rem;
+  background:linear-gradient(160deg,var(--surface-3),var(--surface));
+  border:1px solid var(--line);border-radius:var(--radius);
+  transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.card:hover{transform:translateY(-6px);border-color:var(--accent,var(--gold));box-shadow:var(--shadow-lg)}
+.card__icon{
+  display:flex;align-items:center;justify-content:center;
+  width:52px;height:52px;margin-bottom:1.4rem;
+  font-size:1.5rem;line-height:1;
+  background:var(--ink);border:1px solid var(--line-strong);border-radius:14px;
+  color:var(--accent,var(--gold));
+  transition:border-color .35s var(--ease),transform .35s var(--ease);
+}
+.card:hover .card__icon{transform:scale(1.06);border-color:var(--accent,var(--gold))}
+.card p{color:var(--muted);font-size:.94rem}
+.card__rule{width:38px;height:2px;margin:1.1rem 0;background:var(--accent,var(--gold));opacity:.55;border-radius:2px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.25rem,2.5vw,2rem)}
+
+/* Panel visual de cada unidad de negocio */
+.visual{
+  position:relative;min-height:320px;
+  display:flex;align-items:center;justify-content:center;
+  padding:2rem;overflow:hidden;
+  background:radial-gradient(circle at 30% 20%,var(--surface-3),var(--ink) 70%);
+  border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);
+}
+.visual::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(to right,rgba(148,163,184,.10) 1px,transparent 1px),
+                   linear-gradient(to bottom,rgba(148,163,184,.10) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.visual::after{
+  content:"";position:absolute;width:280px;height:280px;border-radius:50%;
+  background:var(--accent,var(--gold));opacity:.16;filter:blur(90px);
+}
+.visual__glyph{position:relative;font-size:clamp(3rem,7vw,4.5rem);line-height:1;filter:saturate(1.1)}
+
+/* Mini gráfico decorativo (CSS puro) */
+.bars{position:relative;display:flex;align-items:flex-end;gap:.55rem;height:110px}
+.bars i{
+  width:16px;border-radius:5px 5px 2px 2px;
+  background:linear-gradient(180deg,var(--emerald),rgba(16,185,129,.15));
+}
+.bars i:nth-child(1){height:38%}
+.bars i:nth-child(2){height:58%}
+.bars i:nth-child(3){height:44%}
+.bars i:nth-child(4){height:74%}
+.bars i:nth-child(5){height:62%}
+.bars i:nth-child(6){height:92%}
+.bars i:nth-child(7){height:80%}
+
+/* Etiquetas / píldoras */
+.pills{display:flex;flex-wrap:wrap;gap:.6rem}
+.pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.45rem 1rem;border-radius:999px;
+  background:rgba(148,163,184,.07);border:1px solid var(--line);
+  font-size:.78rem;font-weight:500;color:var(--muted);letter-spacing:.02em;
+}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent,var(--gold))}
+
+/* Lista de puntos clave */
+.checklist{display:grid;gap:.7rem}
+.checklist li{display:flex;gap:.7rem;align-items:flex-start;font-size:.94rem;color:var(--muted)}
+.checklist li::before{
+  content:"";flex:0 0 auto;width:8px;height:8px;margin-top:.6rem;border-radius:50%;
+  background:var(--accent,var(--gold));box-shadow:0 0 0 4px rgba(148,163,184,.10);
+}
+
+/* ---------- 5. Secciones ---------- */
+
+/* Hero */
+.hero{position:relative;padding-block:clamp(8rem,16vw,11rem) clamp(4rem,8vw,6.5rem);text-align:center;overflow:hidden}
+.hero .glow--gold{top:-14%;left:50%;transform:translateX(-50%);width:min(760px,90vw);height:520px;background:#1d4ed8;opacity:.22}
+.hero .glow--amber{bottom:-25%;right:-8%;width:460px;height:460px;background:var(--gold);opacity:.10}
+.hero__inner{position:relative;z-index:1;display:grid;justify-items:center;gap:1.75rem}
+.hero .lead{max-width:62ch;text-align:center}
+.hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem;margin-top:.5rem}
+.hero .pills{justify-content:center;margin-top:1rem}
+
+/* Métricas del holding */
+.metrics{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;margin-top:clamp(3rem,6vw,4.5rem);
+  background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+}
+.metric{background:var(--surface);padding:1.9rem 1.5rem;text-align:center}
+.metric dt{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:.5rem}
+.metric dd{margin:0;font-family:var(--font-head);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;color:var(--text)}
+.metric dd em{font-style:normal;color:var(--gold)}
+
+/* Encabezado centrado de sección */
+.section-head{max-width:58ch;margin-inline:auto;text-align:center;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.section-head .eyebrow{justify-content:center}
+.section-head p{color:var(--muted);margin-top:1rem}
+
+/* Footer */
+.site-footer{position:relative;background:#05080f;border-top:1px solid var(--line);padding-top:clamp(3rem,6vw,4.5rem)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(2rem,4vw,3rem)}
+.footer-brand p{color:var(--muted-2);font-size:.9rem;margin-top:1rem;max-width:34ch}
+.footer-title{
+  font-family:var(--font-head);font-size:.76rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem;
+}
+.footer-links{display:grid;gap:.65rem}
+.footer-links a{color:var(--muted-2);font-size:.9rem;transition:color .25s var(--ease),padding-left .25s var(--ease)}
+.footer-links a:hover{color:var(--gold);padding-left:.3rem}
+.footer-bottom{
+  margin-top:clamp(2.5rem,5vw,3.5rem);padding-block:1.6rem;
+  border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;align-items:center;justify-content:space-between;
+  font-size:.82rem;color:var(--muted-2);
+}
+.footer-bottom strong{color:var(--muted);font-weight:600}
+.footer-credit{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.footer-credit .sep{opacity:.4}
+
+
+/* ---------- 5b. AL-HADIQA CAPITAL ---------- */
+.capital{overflow:hidden}
+.capital .glow--cap{top:4%;left:-12%;width:440px;height:440px;background:var(--gold);opacity:.10}
+.capital .glow--cap2{bottom:4%;right:-10%;width:400px;height:400px;background:var(--emerald);opacity:.10}
+.capital-title{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:800}
+.capital-intro .stack strong{color:var(--text);font-weight:600}
+.quote-banner{position:relative;margin:0;padding:clamp(1.8rem,4vw,2.6rem);text-align:center;border-radius:var(--radius);background:linear-gradient(120deg,rgba(251,191,36,.14),rgba(251,191,36,.04) 55%,rgba(16,185,129,.10));border:1px solid rgba(251,191,36,.38);box-shadow:var(--shadow-glow)}
+.quote-banner p{font-family:var(--font-head);font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:700;line-height:1.4}
+.quote-banner small{display:block;margin-top:.9rem;font-family:var(--font-body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.capital-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.method{counter-reset:step;display:grid;gap:1rem;max-width:840px;margin:0 auto;padding:0;list-style:none}
+.method li{position:relative;display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start;padding:1.35rem 1.5rem;background:linear-gradient(160deg,var(--surface-3),var(--surface));border:1px solid var(--line);border-radius:var(--radius-sm);transition:transform .3s var(--ease),border-color .3s var(--ease)}
+.method li:hover{transform:translateX(6px);border-color:rgba(251,191,36,.45)}
+.method li::before{counter-increment:step;content:"0" counter(step);font-family:var(--font-head);font-weight:800;font-size:1.6rem;line-height:1;color:var(--gold);min-width:2.2rem;padding-top:.15rem}
+.method strong{display:block;font-family:var(--font-head);font-size:1rem;margin-bottom:.25rem}
+.method p{color:var(--muted);font-size:.92rem}
+.quadrant-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:1.4rem}
+.quadrant-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:860px;margin-inline:auto}
+.quad{padding:1.5rem;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--qc,var(--gold));border-radius:var(--radius-sm);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.quad:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.quad__letter{font-family:var(--font-head);font-size:2.1rem;font-weight:800;line-height:1;color:var(--qc,var(--gold))}
+.quad h4{font-family:var(--font-head);font-size:1rem;margin:.5rem 0 .3rem}
+.quad p{color:var(--muted);font-size:.88rem}
+.quad--active{background:linear-gradient(160deg,rgba(251,191,36,.13),rgba(16,185,129,.07));border-color:rgba(251,191,36,.40)}
+.quiz{max-width:860px;margin:1.6rem auto 0;text-align:center}
+.quiz>p{color:var(--muted);font-size:.95rem;margin-bottom:1rem}
+.quiz__opts{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:1rem}
+.quiz__btn{padding:.6rem 1.25rem;border-radius:999px;border:1px solid var(--line-strong);background:rgba(148,163,184,.06);color:var(--text);font-family:var(--font-head);font-size:.85rem;cursor:pointer;transition:all .25s var(--ease)}
+.quiz__btn:hover{border-color:var(--gold);color:var(--gold)}
+.quiz__btn[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+#quiz-result{min-height:1.6em;font-size:.95rem;color:var(--gold-soft)}
+.book-dl{margin-top:1.4rem}
+.rating-box{max-width:920px;margin:0 auto 2.2rem;display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start;padding:clamp(1.5rem,3.5vw,2.4rem);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.rating-score-wrap{text-align:center}
+.rating-score{display:block;font-family:var(--font-head);font-size:clamp(2.4rem,5vw,3.2rem);font-weight:800;line-height:1}
+.stars{color:var(--gold);letter-spacing:.12em;font-size:1.15rem}
+.votes{color:var(--muted-2);font-size:.82rem;margin-top:.4rem}
+.rate-label{font-family:var(--font-head);font-size:.95rem;margin-bottom:.3rem}
+.stars-input{display:flex;gap:.15rem;margin-bottom:1rem}
+.star-btn{background:none;border:0;font-size:1.7rem;line-height:1;color:var(--muted-2);cursor:pointer;padding:.1rem;transition:transform .2s var(--ease),color .2s var(--ease)}
+.star-btn:hover{transform:scale(1.2)}
+.star-btn.on{color:var(--gold)}
+#comment-form{display:grid;gap:.7rem}
+#comment-form input,#comment-form textarea{width:100%;padding:.85rem 1rem;border-radius:var(--radius-sm);border:1px solid var(--line-strong);background:rgba(148,163,184,.06);color:var(--text);font-family:var(--font-body);font-size:.92rem;resize:vertical}
+#comment-form input::placeholder,#comment-form textarea::placeholder{color:var(--muted-2)}
+#comment-form input:focus,#comment-form textarea:focus{outline:none;border-color:var(--gold)}
+#comment-form .btn{justify-self:start;padding:.7rem 1.5rem;font-size:.85rem}
+.form-msg{min-height:1.3em;font-size:.85rem;color:var(--gold)}
+.testimonials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+.t-card{padding:1.5rem;background:linear-gradient(160deg,var(--surface-3),var(--surface));border:1px solid var(--line);border-radius:var(--radius-sm)}
+.t-card .stars{font-size:.95rem}
+.t-card p{color:var(--muted);font-size:.92rem;margin:.7rem 0 .9rem}
+.t-card footer{font-size:.82rem;color:var(--muted-2)}
+.disclaimer{margin-top:clamp(2.5rem,5vw,3.5rem);padding:1.2rem 1.5rem;border:1px solid rgba(249,115,22,.45);background:rgba(249,115,22,.08);border-radius:var(--radius-sm);font-size:.88rem;color:var(--muted)}
+@media (max-width:900px){.testimonials{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.rating-box{grid-template-columns:1fr}.rating-score-wrap{text-align:left}}
+@media (max-width:600px){.quadrant-grid{grid-template-columns:1fr}.testimonials{grid-template-columns:1fr}}
+
+/* ---------- 6. Responsive ---------- */
+@media (max-width:1024px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+
+@media (max-width:860px){
+  .burger{display:flex}
+  .nav{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:.25rem;
+    padding:.75rem var(--gutter) 1.5rem;
+    background:rgba(11,17,32,.98);
+    border-bottom:1px solid var(--line);
+    /* Estado cerrado */
+    max-height:0;opacity:0;visibility:hidden;overflow:hidden;
+    transition:max-height .4s var(--ease),opacity .3s var(--ease),visibility .3s;
+  }
+  .nav a{padding:.85rem 1rem;font-size:1rem;border-radius:var(--radius-sm)}
+  .header-cta{margin:.5rem 0 0;justify-content:center}
+  .nav-toggle:checked~.nav{max-height:480px;opacity:1;visibility:visible}
+}
+
+@media (max-width:760px){
+  .split{grid-template-columns:1fr}
+  .split .visual{order:-1;min-height:240px}
+  .split--flip .visual{order:-1}
+  .cards{grid-template-columns:1fr}
+  .metrics{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{justify-content:flex-start}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .btn:hover,.card:hover{transform:none}
+}
+</style>
+<meta name="keywords" content="libertad financiera, educación financiera, finanzas personales, inversión para principiantes, fondos indexados, interés compuesto, presupuesto 50/30/20, cuadrante del flujo del dinero, ahorro, AL-HADIQAINVEST, AL-HADIQA CAPITAL">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"AL-HADIQAINVEST",
+  "description":"Holding Empresarial y Ecosistema Digital: trading institucional, soluciones de negocio, comunidad gaming y educación financiera con AL-HADIQA CAPITAL.",
+  "slogan":"Los hombres luchan y Dios concede la victoria.",
+  "knowsAbout":["Educación financiera","Libertad financiera","Finanzas personales","Inversión a largo plazo","Trading","Desarrollo de software","Comunidades gaming"],
+  "brand":{"@type":"Brand","name":"AL-HADIQA CAPITAL"}
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+<!-- ================= HEADER / NAVEGACIÓN ================= -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#" aria-label="AL-HADIQAINVEST, inicio">AL-HADIQA<span>INVEST</span></a>
+
+    <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-labelledby="nav-toggle-label">
+    <label class="burger" id="nav-toggle-label" for="nav-toggle" role="button" aria-label="Abrir o cerrar el menú de navegación">
+      <span></span>
+    </label>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#trading">Trading</a>
+      <a href="#smithbusiness">SmithBusiness</a>
+      <a href="#gaming">Lions-Gold</a>
+      <a href="#capital">AL-HADIQA Capital</a>
+      <a href="#ecosistema">Ecosistema</a>
+      <a class="btn header-cta" href="#ecosistema">Ver ecosistema</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="glow glow--gold" aria-hidden="true"></div>
+    <div class="glow glow--amber" aria-hidden="true"></div>
+
+    <div class="wrap hero__inner">
+      <p class="eyebrow">Holding empresarial · Desde 2026</p>
+      <h1 class="h-display">
+        Holding Empresarial &amp;<br>
+        <span class="gradient-text">Ecosistema Digital</span>
+      </h1>
+      <p class="lead">
+        Innovación, estrategia y rentabilidad. Conectamos los mercados financieros, soluciones
+        tecnológicas corporativas y el entretenimiento digital de alto nivel en un solo ecosistema integral.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn" href="#trading">Explorar Ecosistema <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost" href="#ecosistema">Nuestros pilares</a>
+      </div>
+
+      <ul class="pills">
+        <li class="pill" style="--accent:var(--emerald)"><span class="dot" aria-hidden="true"></span>Trading Institucional</li>
+        <li class="pill" style="--accent:var(--blue)"><span class="dot" aria-hidden="true"></span>SmithBusiness Solutions</li>
+        <li class="pill" style="--accent:var(--orange)"><span class="dot" aria-hidden="true"></span>Taberna Lions-Gold</li>
+        <li class="pill"><span class="dot" aria-hidden="true"></span>AL-HADIQA Capital</li>
+      </ul>
+
+      <dl class="metrics">
+        <div class="metric">
+          <dt>Unidades de negocio</dt>
+          <dd><em>04</em> divisiones activas</dd>
+        </div>
+        <div class="metric">
+          <dt>Enfoque</dt>
+          <dd>Finanzas · <em>Tech</em> · Gaming</dd>
+        </div>
+        <div class="metric">
+          <dt>Modelo operativo</dt>
+          <dd>Ecosistema <em>integrado</em></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= 1. TRADING INSTITUCIONAL ================= -->
+  <section class="section section--alt" id="trading" style="--accent:var(--emerald)">
+    <div class="wrap split">
+      <div class="stack">
+        <p class="eyebrow">División 01 · Finanzas</p>
+        <h2 class="h-section">Trading Institucional &amp; Educación Financiera</h2>
+        <p class="body-text">
+          Accede a los mercados globales con estrategias institucionales. Formamos traders profesionales
+          combinando análisis avanzado, gestión de riesgo y una educación financiera estructurada para la
+          rentabilidad a largo plazo.
+        </p>
+        <ul class="checklist">
+          <li>Estrategias de nivel institucional aplicadas a mercados globales.</li>
+          <li>Gestión de riesgo y control de capital como base de cada operación.</li>
+          <li>Programa formativo estructurado y orientado al largo plazo.</li>
+        </ul>
+        <p>
+          <a class="btn btn--emerald"
+             href="https://empresaalhadiqainvest-ux.github.io/Al-hadiqainvest-TRADING-Y-EDUCACI-N-FINANCIERA-/"
+             target="_blank" rel="noopener noreferrer">
+            Ingresar a la Plataforma <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </p>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. SMITHBUSINESS SOLUTIONS ================= -->
+  <section class="section" id="smithbusiness" style="--accent:var(--blue)">
+    <div class="wrap split split--flip">
+      <div class="visual" aria-hidden="true">
+        <span class="visual__glyph">&#9881;&#65039;</span>
+      </div>
+
+      <div class="stack">
+        <p class="eyebrow">División 02 · Tecnología</p>
+        <h2 class="h-section">SMITHBUSINESS Solutions</h2>
+        <p class="body-text">
+          Desarrollo de soluciones de negocio, tecnología y consultoría empresarial. Optimizamos procesos,
+          diseñamos arquitecturas de software robustas y escalamos operaciones comerciales mediante
+          innovación digital.
+        </p>
+        <ul class="checklist">
+          <li>Arquitecturas de software escalables y mantenibles.</li>
+          <li>Automatización y optimización de procesos operativos.</li>
+          <li>Consultoría estratégica para el crecimiento comercial.</li>
+        </ul>
+        <p>
+          <a class="btn btn--blue"
+             href="https://empresaalhadiqainvest-ux.github.io/Smith-business-solutions/"
+             target="_blank" rel="noopener noreferrer">
+            Descubrir Soluciones <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. TABERNA LIONS-GOLD ================= -->
+  <section class="section section--alt" id="gaming" style="--accent:var(--orange)">
+    <div class="wrap split">
+      <div class="stack">
+        <p class="eyebrow">División 03 · Entretenimiento</p>
+        <h2 class="h-section">TABERNA LIONS-GOLD</h2>
+        <h3 class="h-card" style="color:var(--gold);font-weight:600">Comunidad Gaming MMORPG Albion Online</h3>
+        <p class="body-text">
+          Nuestro brazo de entretenimiento e interacción digital. Una comunidad sólida y competitiva dentro
+          del MMORPG Albion Online, centrada en la estrategia de gremios, economía interna y desarrollo de
+          jugadores en un entorno colaborativo.
+        </p>
+        <ul class="checklist">
+          <li>Estrategia de gremios y coordinación competitiva.</li>
+          <li>Economía interna y gestión eficiente de recursos.</li>
+          <li>Desarrollo de jugadores en un entorno colaborativo.</li>
+        </ul>
+        <p>
+          <a class="btn btn--orange"
+             href="https://zambranogonzalezsmith-blip.github.io/LA-TABERNA-LIONS-GOLD-/"
+             target="_blank" rel="noopener noreferrer">
+            Unirse a la Taberna <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </p>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <span class="visual__glyph">&#9876;&#65039;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. PILARES DEL ECOSISTEMA ================= -->
+  <section class="section" id="ecosistema">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Infraestructura</p>
+        <h2 class="h-section">Pilares del Ecosistema Digital</h2>
+        <p>
+          La infraestructura tecnológica y de servicios que da soporte al holding empresarial,
+          garantizando escalabilidad y eficiencia.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card" style="--accent:var(--gold)">
+          <div class="card__icon" aria-hidden="true">&#128722;</div>
+          <h3 class="h-card">Plataformas E-Commerce</h3>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Desarrollo e implementación de sistemas multi-tienda y plataformas de distribución con pasarelas de pago integradas e inventario automatizado.</p>
+        </article>
+
+        <article class="card" style="--accent:var(--emerald)">
+          <div class="card__icon" aria-hidden="true">&#129504;</div>
+          <h3 class="h-card">Inteligencia Artificial</h3>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Diseño de asistentes virtuales e inteligencias artificiales capaces de operar localmente (offline) para optimizar la toma de decisiones empresariales.</p>
+        </article>
+
+        <article class="card" style="--accent:var(--blue)">
+          <div class="card__icon" aria-hidden="true">&#128737;&#65039;</div>
+          <h3 class="h-card">Gestión de Comunidades</h3>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Creación, administración y liderazgo de entornos digitales a gran escala, gestionando recursos y fomentando el crecimiento colectivo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 5. AL-HADIQA CAPITAL ================= -->
+  <section class="section section--alt capital" id="capital">
+    <div class="glow glow--cap" aria-hidden="true"></div>
+    <div class="glow glow--cap2" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">División 04 &middot; Educación Financiera</p>
+        <h2 class="h-section capital-title">AL-HADIQA <span class="gradient-text">CAPITAL</span></h2>
+        <p class="lead" style="margin:1.1rem auto 0;font-weight:500;color:var(--text)">Tu camino a la libertad financiera &#128176;</p>
+        <p style="color:var(--muted);margin-top:.8rem">Educación financiera real, sin humo y sin promesas falsas. Para jóvenes y adultos que quieren tomar el control de su dinero.</p>
+        <p class="h-card" style="margin-top:1.4rem;color:var(--gold)">&iquest;Qu&eacute; es la libertad financiera y c&oacute;mo empezar desde cero?</p>
+      </div>
+
+      <div class="split capital-intro">
+        <div class="stack">
+          <p class="eyebrow">La idea central</p>
+          <p class="body-text">La libertad financiera es el punto en que tus <strong>activos</strong> (inversiones, negocios, activos digitales) generan ingresos suficientes para cubrir tu estilo de vida, y tu tiempo vuelve a ser tuyo. No es dejar de trabajar ni hacerse rico de la noche a la ma&ntilde;ana: es un <strong>sistema</strong> que cualquier persona disciplinada puede construir desde cero. Aqu&iacute; no reinventamos la rueda: aplicamos el mismo m&eacute;todo que usan los inversores de largo plazo, explicado paso a paso y sin humo.</p>
+        </div>
+        <blockquote class="quote-banner">
+          <p>&laquo;Los hombres luchan y Dios concede la victoria.&raquo;</p>
+          <small>Filosof&iacute;a AL-HADIQAINVEST &middot; T&uacute; pones el esfuerzo y la constancia; los resultados llegan.</small>
+        </blockquote>
+      </div>
+
+      <div class="section-head" style="margin-top:clamp(3rem,6vw,4.5rem)">
+        <p class="eyebrow">Dos pilares, un solo camino</p>
+        <h3 class="h-section">Primero dominas tu dinero,<br>luego tu dinero trabaja para ti</h3>
+      </div>
+      <div class="cards capital-cards">
+        <article class="card" style="--accent:var(--gold)">
+          <div class="card__icon" aria-hidden="true">&#128181;</div>
+          <h4 class="h-card">Pilar 1 &middot; Finanzas personales</h4>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Ahorro, presupuestos y control de tu dinero desde cero. La base sin la cual ninguna inversi&oacute;n sobrevive: saber exactamente cu&aacute;nto entra, cu&aacute;nto sale y hacia d&oacute;nde va cada unidad.</p>
+          <ul class="checklist" style="margin-top:1rem">
+            <li>Regla de oro: p&aacute;gate a ti primero (m&iacute;nimo 10% de cada ingreso).</li>
+            <li>Presupuesto 50/30/20: necesidades, gustos y ahorro.</li>
+            <li>Fondo de emergencia: 3 a 6 meses de gastos protegidos.</li>
+          </ul>
+        </article>
+        <article class="card" style="--accent:var(--emerald)">
+          <div class="card__icon" aria-hidden="true">&#128200;</div>
+          <h4 class="h-card">Pilar 2 &middot; Inversi&oacute;n b&aacute;sica</h4>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Inter&eacute;s compuesto, fondos indexados y estrategias de largo plazo. Invertir no es apostar: es comprar activos productivos de forma constante y dejar que el tiempo haga la mayor parte del trabajo.</p>
+          <ul class="checklist" style="margin-top:1rem">
+            <li>Inter&eacute;s compuesto: el dinero que genera dinero.</li>
+            <li>Fondos indexados: diversificaci&oacute;n de bajo costo.</li>
+            <li>Constancia mensual por encima de la suerte.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="section-head" style="margin-top:clamp(3.5rem,7vw,5.5rem)">
+        <p class="eyebrow">El m&eacute;todo</p>
+        <h3 class="h-section">El M&eacute;todo AL-HADIQA: 5 pasos reales hacia la libertad financiera</h3>
+        <p>Un sistema simple que cualquier persona puede ejecutar, sin importar su salario ni su pa&iacute;s. No reinventamos la rueda: la ponemos a girar en tu favor.</p>
+      </div>
+      <ol class="method">
+        <li><div><strong>Toma el control de tus n&uacute;meros</strong><p>Durante 30 d&iacute;as registra cada ingreso y cada gasto. No puedes mejorar lo que no mides. Conocer tus n&uacute;meros es el d&iacute;a 1 de tu libertad.</p></div></li>
+        <li><div><strong>Ponte un presupuesto y p&aacute;gate primero</strong><p>Aplica el 50/30/20: 50% necesidades, 30% gustos, 20% ahorro e inversi&oacute;n. Antes de pagar cualquier cosa, separa tu 10% m&iacute;nimo de &laquo;p&aacute;gate a ti primero&raquo;.</p></div></li>
+        <li><div><strong>Blinda tu base: fondo de emergencia y cero deudas caras</strong><p>Acumula de 3 a 6 meses de gastos en una cuenta separada y liquida primero las deudas con mayor inter&eacute;s (tarjetas, pr&eacute;stamos r&aacute;pidos). Un castillo sin cimientos cae con el primer viento.</p></div></li>
+        <li><div><strong>Invierte con constancia, no con suerte</strong><p>Una vez blindada tu base, invierte cada mes de forma autom&aacute;tica en fondos indexados del mercado global. El inter&eacute;s compuesto premia al constante: $100 mensuales al 8% anual se convierten en aprox. $149,000 en 30 a&ntilde;os, habiendo aportado solo $36,000.</p></div></li>
+        <li><div><strong>Multiplica tus fuentes de ingreso</strong><p>Crea activos que paguen sin tu tiempo directo: un negocio con sistema, productos digitales, contenido o m&aacute;s inversiones. As&iacute; te mueves del lado izquierdo al lado derecho del cuadrante del flujo del dinero.</p></div></li>
+      </ol>
+
+      <div class="section-head" style="margin-top:clamp(3.5rem,7vw,5.5rem)">
+        <p class="eyebrow">El mapa del dinero</p>
+        <h3 class="h-section">El Cuadrante del Flujo del Dinero</h3>
+        <p>Del cl&aacute;sico <em>Padre Rico, Padre Pobre</em> de Robert Kiyosaki: la forma en que generas tu dinero determina tu libertad. El camino va de los ingresos activos (izquierda) a los ingresos pasivos (derecha). Toca tu cuadrante actual y descubre tu siguiente paso.</p>
+      </div>
+      <div class="quadrant-legend">
+        <span class="pill"><span class="dot" style="--accent:var(--muted-2)"></span>Ingresos activos &middot; trabajas por dinero</span>
+        <span class="pill" style="--accent:var(--gold)"><span class="dot"></span>Ingresos pasivos &middot; el dinero trabaja para ti</span>
+      </div>
+      <div class="quadrant-grid">
+        <div class="quad" style="--qc:var(--muted-2)">
+          <span class="quad__letter" aria-hidden="true">E</span>
+          <h4>Empleado</h4>
+          <p>Cambias tiempo por un salario. Es el cuadrante m&aacute;s seguro&hellip; y m&aacute;s dependiente: si t&uacute; te detienes, tu ingreso tambi&eacute;n.</p>
+        </div>
+        <div class="quad" style="--qc:var(--blue)">
+          <span class="quad__letter" aria-hidden="true">A</span>
+          <h4>Aut&oacute;nomo / Especialista</h4>
+          <p>Tienes oficio propio y ganas m&aacute;s, pero todo depende de tu esfuerzo directo. Eres tu propio jefe&hellip; y tu propio empleado.</p>
+        </div>
+        <div class="quad quad--active" style="--qc:var(--gold)">
+          <span class="quad__letter" aria-hidden="true">D</span>
+          <h4>Due&ntilde;o de Negocio</h4>
+          <p>Un sistema y un equipo generan los ingresos. Tu presencia deja de ser el l&iacute;mite: el negocio trabaja aunque t&uacute; no est&eacute;s.</p>
+        </div>
+        <div class="quad quad--active" style="--qc:var(--emerald)">
+          <span class="quad__letter" aria-hidden="true">I</span>
+          <h4>Inversor</h4>
+          <p>Tu capital trabaja para ti: inter&eacute;s compuesto, fondos indexados y activos que pagan. El cuadrante de la verdadera libertad.</p>
+        </div>
+      </div>
+      <div class="quiz">
+        <p><strong style="color:var(--text)">&iquest;En qu&eacute; cuadrante est&aacute;s hoy?</strong></p>
+        <div class="quiz__opts">
+          <button class="quiz__btn" type="button" data-q="E">E &middot; Empleado</button>
+          <button class="quiz__btn" type="button" data-q="A">A &middot; Aut&oacute;nomo</button>
+          <button class="quiz__btn" type="button" data-q="D">D &middot; Due&ntilde;o de negocio</button>
+          <button class="quiz__btn" type="button" data-q="I">I &middot; Inversor</button>
+        </div>
+        <p id="quiz-result" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="section-head" style="margin-top:clamp(3.5rem,7vw,5.5rem)">
+        <p class="eyebrow">Biblioteca gratuita</p>
+        <h3 class="h-section">Libros para crear h&aacute;bitos financieros &#128218;</h3>
+        <p>Descarga gratis las gu&iacute;as de AL-HADIQA CAPITAL en PDF. L&eacute;elas, aplica una idea por semana y convi&eacute;rtela en h&aacute;bito.</p>
+      </div>
+      <div class="cards">
+        <article class="card" style="--accent:var(--gold)">
+          <div class="card__icon" aria-hidden="true">&#128213;</div>
+          <h4 class="h-card">7 H&aacute;bitos Financieros para tu Libertad</h4>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Los 7 h&aacute;bitos que transforman tu relaci&oacute;n con el dinero, con un plan de acci&oacute;n de 30 d&iacute;as para empezar hoy mismo.</p>
+          <a class="btn btn--ghost book-dl" href="libros/7-habitos-financieros.pdf" download>Descargar PDF <span class="arrow" aria-hidden="true">&darr;</span></a>
+        </article>
+        <article class="card" style="--accent:var(--emerald)">
+          <div class="card__icon" aria-hidden="true">&#128215;</div>
+          <h4 class="h-card">El Presupuesto 50/30/20</h4>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Gu&iacute;a pr&aacute;ctica paso a paso con ejemplo num&eacute;rico y plantilla mensual para tomar el control de tu dinero desde hoy.</p>
+          <a class="btn btn--ghost book-dl" href="libros/presupuesto-50-30-20.pdf" download>Descargar PDF <span class="arrow" aria-hidden="true">&darr;</span></a>
+        </article>
+        <article class="card" style="--accent:var(--blue)">
+          <div class="card__icon" aria-hidden="true">&#128216;</div>
+          <h4 class="h-card">El Cuadrante del Flujo del Dinero</h4>
+          <div class="card__rule" aria-hidden="true"></div>
+          <p>Resumen pr&aacute;ctico con el plan de acci&oacute;n para moverte de los ingresos activos (E-A) a los pasivos (D-I).</p>
+          <a class="btn btn--ghost book-dl" href="libros/cuadrante-flujo-del-dinero.pdf" download>Descargar PDF <span class="arrow" aria-hidden="true">&darr;</span></a>
+        </article>
+      </div>
+
+      <div class="section-head" style="margin-top:clamp(3.5rem,7vw,5.5rem)">
+        <p class="eyebrow">Comunidad</p>
+        <h3 class="h-section">Lo que dice nuestra comunidad &#11088;</h3>
+        <p>Califica la gu&iacute;a y comparte tu experiencia. Tu comentario motiva a otros a empezar su camino.</p>
+      </div>
+      <div class="rating-box">
+        <div class="rating-score-wrap">
+          <span class="rating-score" id="avg-score">4.8</span>
+          <div class="stars" id="avg-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="votes" id="total-votes">8 valoraciones</p>
+        </div>
+        <div>
+          <p class="rate-label">&iquest;Te sirvi&oacute; esta gu&iacute;a? Calif&iacute;cala:</p>
+          <div class="stars-input" id="stars-input">
+            <button class="star-btn" type="button" aria-label="Calificar con 1 estrella">&#9733;</button>
+            <button class="star-btn" type="button" aria-label="Calificar con 2 estrellas">&#9733;</button>
+            <button class="star-btn" type="button" aria-label="Calificar con 3 estrellas">&#9733;</button>
+            <button class="star-btn" type="button" aria-label="Calificar con 4 estrellas">&#9733;</button>
+            <button class="star-btn" type="button" aria-label="Calificar con 5 estrellas">&#9733;</button>
+          </div>
+          <form id="comment-form">
+            <label class="sr-only" for="c-name">Tu nombre</label>
+            <input id="c-name" name="nombre" type="text" placeholder="Tu nombre" maxlength="40" autocomplete="name" required>
+            <label class="sr-only" for="c-text">Tu comentario</label>
+            <textarea id="c-text" name="comentario" rows="3" placeholder="Comparte tu experiencia con AL-HADIQA CAPITAL&hellip;" maxlength="300" required></textarea>
+            <div>
+              <button class="btn" type="submit">Publicar comentario <span class="arrow" aria-hidden="true">&rarr;</span></button>
+            </div>
+            <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+      <div class="testimonials" id="testimonials-list"></div>
+
+      <div class="disclaimer">
+        &#9888;&#65039; <strong>Contenido con fines educativos. No es asesor&iacute;a financiera.</strong> La inversi&oacute;n conlleva riesgo de p&eacute;rdida de capital. Los resultados descritos son ilustrativos y dependen de la disciplina, el horizonte de tiempo y las condiciones del mercado. Nunca inviertas dinero que no est&eacute;s dispuesto a mantener invertido a largo plazo.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#" aria-label="AL-HADIQAINVEST, volver al inicio">AL-HADIQA<span>INVEST</span></a>
+        <p>Holding Empresarial &amp; Ecosistema Digital. Finanzas, tecnología y entretenimiento bajo una misma estrategia.</p>
+      </div>
+
+      <nav aria-labelledby="footer-nav-title">
+        <h2 class="footer-title" id="footer-nav-title">Divisiones</h2>
+        <div class="footer-links">
+          <a href="#trading">Trading Institucional</a>
+          <a href="#smithbusiness">SmithBusiness Solutions</a>
+          <a href="#gaming">Taberna Lions-Gold</a>
+          <a href="#capital">AL-HADIQA Capital</a>
+          <a href="#ecosistema">Ecosistema Digital</a>
+        </div>
+      </nav>
+
+      <div>
+        <h2 class="footer-title">Plataformas</h2>
+        <div class="footer-links">
+          <a href="https://empresaalhadiqainvest-ux.github.io/Al-hadiqainvest-TRADING-Y-EDUCACI-N-FINANCIERA-/" target="_blank" rel="noopener noreferrer">Plataforma de Trading</a>
+          <a href="https://empresaalhadiqainvest-ux.github.io/Smith-business-solutions/" target="_blank" rel="noopener noreferrer">Soluciones de Negocio</a>
+          <a href="https://zambranogonzalezsmith-blip.github.io/LA-TABERNA-LIONS-GOLD-/" target="_blank" rel="noopener noreferrer">Comunidad Gaming</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 AL-HADIQAINVEST. Todos los derechos reservados.</p>
+      <p class="footer-credit">
+        <span>Derechos de autor &copy; 2026 <strong>Smith Business Solutions</strong></span>
+        <span class="sep" aria-hidden="true">|</span>
+        <span>Diseño y desarrollo</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  "use strict";
+  /* ---------- Calificación por estrellas + comentarios ---------- */
+  var KEY = "alhadiqa_capital_v1";
+  var seed = {
+    ratings:[5,4,5,5,4,5,5,4],
+    comments:[
+      {name:"Carlos R.",stars:5,text:"Llegué sin saber nada de finanzas. El método de los 5 pasos me cambió la mentalidad: hoy ya tengo mi primer fondo de emergencia.",date:"hace 2 semanas"},
+      {name:"Ana M.",stars:5,text:"Por fin alguien explica el interés compuesto y los fondos indexados sin humo ni promesas falsas. Clarísimo y directo al grano.",date:"hace 1 mes"},
+      {name:"Diego T.",stars:4,text:"El cuadrante del flujo del dinero me abrió los ojos. Ahora trabajo en moverme del lado izquierdo al lado derecho.",date:"hace 1 mes"},
+      {name:"Laura P.",stars:5,text:"Los libros gratuitos de la biblioteca valen oro. Los descargué todos y ya voy en la semana 2 del plan de 30 días.",date:"hace 3 semanas"}
+    ]
+  };
+  function load(){ try{ var d=JSON.parse(localStorage.getItem(KEY)); if(d&&d.comments){return d;} }catch(e){} return null; }
+  var data = load() || JSON.parse(JSON.stringify(seed));
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){} }
+  function starStr(n){ var s=""; for(var i=1;i<=5;i++){ s += (i<=n ? "\u2605" : "\u2606"); } return s; }
+  function esc(t){ var d=document.createElement("div"); d.textContent=t; return d.innerHTML; }
+  function each(list,fn){ Array.prototype.forEach.call(list,fn); }
+  function renderSummary(){
+    var t=data.ratings.length;
+    var avg=t ? data.ratings.reduce(function(a,b){return a+b;},0)/t : 0;
+    document.getElementById("avg-score").textContent = avg.toFixed(1);
+    document.getElementById("avg-stars").innerHTML = starStr(Math.round(avg));
+    document.getElementById("total-votes").textContent = t + (t===1 ? " valoración" : " valoraciones");
+  }
+  function renderList(){
+    var el=document.getElementById("testimonials-list");
+    el.innerHTML = data.comments.slice().reverse().map(function(c){
+      return '<article class="t-card"><div class="stars" aria-label="'+c.stars+' de 5 estrellas">'+starStr(c.stars)+'</div><p>&laquo;'+esc(c.text)+'&raquo;</p><footer>&mdash; '+esc(c.name)+' &middot; '+esc(c.date)+'</footer></article>';
+    }).join("");
+  }
+  var selected=0;
+  var btns=document.getElementById("stars-input").querySelectorAll(".star-btn");
+  function paint(){ each(btns,function(b,i){ b.classList.toggle("on", i<selected); }); }
+  each(btns,function(b,i){ b.addEventListener("click",function(){ selected=i+1; paint(); }); });
+  document.getElementById("comment-form").addEventListener("submit",function(e){
+    e.preventDefault();
+    var name=document.getElementById("c-name").value.trim();
+    var text=document.getElementById("c-text").value.trim();
+    var msg=document.getElementById("form-msg");
+    if(!name || !text || !selected){ msg.textContent="Completa tu nombre, tu comentario y tu calificación con estrellas."; return; }
+    data.comments.push({name:name,stars:selected,text:text,date:"ahora mismo"});
+    data.ratings.push(selected);
+    save(); renderSummary(); renderList();
+    this.reset(); selected=0; paint();
+    msg.textContent="¡Gracias! Tu comentario fue publicado.";
+  });
+  renderSummary(); renderList();
+
+  /* ---------- Quiz del cuadrante ---------- */
+  var msgs={
+    E:"Eres Empleado: tu ingreso depende de tu tiempo. Tu siguiente paso es crear un presupuesto y pagarte primero, para empezar a construir activos.",
+    A:"Eres Autónomo: ganas bien, pero todo depende de ti. Sistematiza tu trabajo y convierte tu habilidad en un activo que genere sin tu presencia.",
+    D:"Eres Dueño de negocio: tu sistema trabaja para ti. Tu foco ahora es reinvertir las utilidades y escalar hacia el cuadrante Inversor.",
+    I:"Eres Inversor: tu dinero trabaja para ti. Protege tu capital con diversificación y mantén la disciplina del largo plazo."
+  };
+  each(document.querySelectorAll(".quiz__btn"),function(b){
+    b.addEventListener("click",function(){
+      each(document.querySelectorAll(".quiz__btn"),function(x){ x.setAttribute("aria-pressed","false"); });
+      b.setAttribute("aria-pressed","true");
+      document.getElementById("quiz-result").textContent = msgs[b.getAttribute("data-q")];
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
